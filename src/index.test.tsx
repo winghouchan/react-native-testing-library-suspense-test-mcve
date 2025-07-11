@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import Component from ".";
 
 describe("<Component />", () => {
-  it("renders successfully", () => {
+  it("renders successfully", async () => {
     render(
       <Suspense
         fallback={
@@ -17,6 +17,6 @@ describe("<Component />", () => {
       </Suspense>
     );
 
-    expect(screen.getByTestId("component")).toBeOnTheScreen();
+    expect(await screen.findByTestId("component")).toBeOnTheScreen();
   });
 });
