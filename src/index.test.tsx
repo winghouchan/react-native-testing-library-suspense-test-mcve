@@ -1,21 +1,12 @@
-import { render, screen } from "@testing-library/react-native";
-import { Suspense } from "react";
-import { Text, View } from "react-native";
+import { screen } from "@testing-library/react-native";
+import { renderRouter } from "expo-router/testing-library";
 import Component from ".";
 
 describe("<Component />", () => {
   it("renders successfully", () => {
-    render(
-      <Suspense
-        fallback={
-          <View>
-            <Text>Loading</Text>
-          </View>
-        }
-      >
-        <Component />
-      </Suspense>
-    );
+    renderRouter({
+      index: () => <Component />,
+    });
 
     expect(screen.getByTestId("component")).toBeOnTheScreen();
   });
